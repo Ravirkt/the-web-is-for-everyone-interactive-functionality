@@ -9,7 +9,7 @@ import { Liquid } from 'liquidjs';
 const app = express()
 
 // Maak werken met data uit formulieren iets prettiger
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 
 // Gebruik de map 'public' voor statische bestanden (resources zoals CSS, JavaScript, afbeeldingen en fonts)
 // Bestanden in deze map kunnen dus door de browser gebruikt worden
@@ -61,6 +61,86 @@ app.post(…, async function (request, response) {
   response.redirect(303, …)
 })
 */
+
+// index ophalen alle data van cards
+app.get('/events', async function (request, response) {
+  const apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events')
+  const apiResponseJSON = await apiResponse.json()
+  // console.log(apiResponseJSON.data)
+
+
+  response.render('events.liquid', { events: apiResponseJSON.data })
+})
+
+
+
+
+app.get('/events/:location', async function (request, response) {
+  const location = request.params.location;
+
+  let apiResponse;
+
+  if (location === 'Alle-locaties') {
+    apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events');
+
+  } else if (location === 'Nog-niet-bekend') {
+    apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter={"location":{"_null":true}}');
+
+  } else if (location) {
+    apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter={"location":{"_eq":"' + request.params.location + '"}}');
+
+  } else {
+    apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events');
+  }
+
+  const apiResponseJSON = await apiResponse.json();
+  console.log(apiResponseJSON);
+
+
+  response.render('events.liquid', { events: apiResponseJSON.data });
+});
+
+
+// details pagina
+app.get('/events/detail-event/:id', async function (request, response) {
+  // const eventId = request.params.id;
+
+  const apiResponseDetails = await fetch('https://fdnd-agency.directus.app/items/dda_events/' + request.params.id)
+  const apiResponseDetailsJSON = await apiResponseDetails.json()
+
+  console.log(request.params.id)
+
+  response.render('detail-event.liquid', { eventDetails: apiResponseDetailsJSON.data })
+})
+
+
+
+
+
+
+
+
+// Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
+// Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
+app.post('/send', async function (request, response) {
+  const req = request.body;
+
+  // Stuur direct een response terug, hier even ter test
+  response.send(`Je naam is ${req.name} en je company is ${req.company}`);
+
+  // response.redirect(303, '/');
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
