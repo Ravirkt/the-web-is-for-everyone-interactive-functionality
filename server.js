@@ -103,16 +103,24 @@ app.get('/events/:location', async function (request, response) {
 
 // details pagina
 app.get('/events/detail-event/:id', async function (request, response) {
-  // const eventId = request.params.id;
 
-  const apiResponseDetails = await fetch('https://fdnd-agency.directus.app/items/dda_events/' + request.params.id)
-  const apiResponseDetailsJSON = await apiResponseDetails.json()
+    // ophalen van event details
+    const apiResponseDetails = await fetch('https://fdnd-agency.directus.app/items/dda_events/' + request.params.id);
+    const apiResponseDetailsJSON = await apiResponseDetails.json();
 
-  console.log(request.params.id)
+    // ophalen companies per event
+    const apiResponseCompany = await fetch('https://fdnd-agency.directus.app/items/dda_signups?fields=company&filter[event][_eq]=' + request.params.id);
+    const apiResponseCompanyJSON = await apiResponseCompany.json();
 
-  response.render('detail-event.liquid', { eventDetails: apiResponseDetailsJSON.data })
-})
+    console.log("Evendid:", request.params.id);
+    console.log("Companys:", apiResponseCompanyJSON);
 
+    response.render('detail-event.liquid', { 
+      eventDetails: apiResponseDetailsJSON.data, 
+      companies: apiResponseCompanyJSON.data 
+    });
+
+});
 
 
 
