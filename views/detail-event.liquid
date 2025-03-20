@@ -83,7 +83,7 @@
 
   <!-- ============ contenblok-4 ============ -->
 
-
+  {% if eventDetails.id %}
     <section class="sign-up-for-event-container">
       <h2 class="sign-up-form-title">INSCHRIJVEN</h2>
       <form class="sign-up-form" action="/send" method="post">
@@ -94,6 +94,7 @@
           <input type="email" name="email" class="input-field" placeholder="E-mailadres*" required> {% endcomment %}
           {% comment %} <input type="tel" name="mobiel" class="input-field" placeholder="Mobiel*" required> {% endcomment %}
           <input type="text" name="company" class="input-field" placeholder="Bedrijfsnaam*" required>
+          <input type="hidden" name="event" class="input-field" placeholder="event-id" value="{{ eventDetails.id }}" required>
           {% comment %} <input type="url" name="bedrijfswebsite" class="input-field" placeholder="Bedrijfswebsite*" required> {% endcomment %}
           {% comment %} <textarea name="motivatie" class="input-field" placeholder="Ik wil graag lid worden omdat:*" required></textarea> {% endcomment %}
           {% comment %} <input type="number" name="fte" class="input-field" placeholder="FTE*" required min="0" step="0.1"> {% endcomment %}
@@ -107,15 +108,39 @@
           </div>
       </form>
   </section>
+{% endif %}
 
     <!-- ============ contenblok-5 ============ -->
+    <section class="participating-companies-container">
+      <h2 class="participating-companies-title">DEELNEMENDE BEDRIJVEN</h2>
+      <table class="participating-companies-table">
+  {% assign row_amount = 0 %}
+  {% assign column_amount = 0 %}
+  {% for company in companies %}
+    {% if column_amount == 0 %}
+      <tr>
+    {% endif %}
+    <td>{{ company.company }}</td>
+    {% assign column_amount = column_amount | plus: 1 %}
+    {% if column_amount == 3 %}
+      {% assign column_amount = 0 %}
+      </tr>
+    {% endif %}
+  {% endfor %}
+</table>
 
+    
+  </section>
+
+
+
+        <!-- ============ contenblok-6 ============ -->
 
   <figure class="event-location-image-container">
     <img class="event-location-image" src="/assets/Image.png" alt="Sample Event Title">
   </figure>
     
-    <!-- ============ contenblok-6 ============ -->
+    <!-- ============ contenblok-7 ============ -->
 
 
   <section class="event-location-information-container">
@@ -128,7 +153,7 @@
           {% endif %}</span>
         </span></h3>
         <div class="maps-links-button-route-container">
-            <button type="submit" class="google-maps-button">SCHRIJF ME IN
+            <button type="submit" class="google-maps-button">ROUTE OP GOOGLE MAPS
                 <svg class="signup-arrow-icon" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8.5 3L13.5001 8.0001L8.5 13.0002" stroke="#222226" stroke-width="1.5" stroke-miterlimit="4.62023" />
                 <path d="M3.5 8L13.5 8" stroke="#222226" stroke-width="1.5" stroke-miterlimit="4.62023" stroke-linejoin="round" />
