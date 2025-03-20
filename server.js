@@ -123,16 +123,29 @@ app.get('/events/detail-event/:id', async function (request, response) {
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
 app.post('/send', async function (request, response) {
-  const req = request.body;
+  const { name, company, event } = request.body;
 
-  // Stuur direct een response terug, hier even ter test
-  response.send(`Je naam is ${req.name} en je company is ${req.company}`);
+  const apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_signups', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      
+    },
+    body: JSON.stringify({
+      name: name,
+      company: company,
+      event: event 
+    })
+  });
 
+
+  response.send(`Je naam is ${request.body.name} en je company is ${request.body.company} en de eventnummer id ${request.body.event}`);
+    
   // response.redirect(303, '/');
 });
 
 
-
+// nodemon activeren npx nodemon server.js
 
 
 
