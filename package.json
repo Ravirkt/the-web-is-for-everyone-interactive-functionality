@@ -8,7 +8,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "start": "node server.js"
+
   },
   "keywords": [
     "node",

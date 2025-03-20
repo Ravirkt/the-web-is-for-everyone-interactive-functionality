@@ -68,7 +68,13 @@ app.get('/events', async function (request, response) {
   const apiResponseHeaderEvents = await fetch('https://fdnd-agency.directus.app/items/dda_events?limit=3');
   const apiResponseHeaderEventsJSON = await apiResponseHeaderEvents.json()
 
+  // console.log(apiResponseJSON.data)
+
+  // const {theme, location} = request.query;
+  const {location} = request.query;
+
   let apiResponse;
+
   // const apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter[theme][_eq]=' + theme, '&filter[location][_eq]=' + location);
 
   if (location === undefined || location === '') {
