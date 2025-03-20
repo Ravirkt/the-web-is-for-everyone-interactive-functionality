@@ -201,6 +201,54 @@ header {
     height: 4em;
 }
 
+/* all companies */
+
+.participating-companies-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1.5em;
+
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-bottom: 2em;
+}
+
+.participating-companies-title {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.participating-companies-table {
+    grid-column: 1;
+    grid-row: 2;
+
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.participating-companies-table td {
+    border-bottom: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.participating-companies-table tr:last-child td {
+    border-bottom: none;
+}
+
+.participating-companies-table td:nth-child(2) {
+    text-align: center;
+}
+
+
+
+
+
+
+
+
 /* event location image */
 
 .event-location-image-container {
@@ -250,6 +298,6 @@ header {
     gap: 0.5em;
     background-color: var(--background-color);
     border: 1px solid var(--fonts-color-1);
-    width: 12em;
+    width: 16em;
     height: 4em;
 }
