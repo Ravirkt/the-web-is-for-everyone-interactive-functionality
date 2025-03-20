@@ -86,7 +86,7 @@
   {% if eventDetails.id %}
     <section class="sign-up-for-event-container">
       <h2 class="sign-up-form-title">INSCHRIJVEN</h2>
-      <form class="sign-up-form" action="/send" method="post">
+      <form class="sign-up-form" action="/events/detail-event/{{ eventDetails.id }}" method="post">
           {% comment %} <input type="text" name="functie" class="input-field" placeholder="Functie*" required> {% endcomment %}
           <input type="text" name="name" class="input-field" placeholder="Voornaam*" required>
           {% comment %} <input type="text" name="tussenvoegsel" class="input-field" placeholder="Tussenvoegsel">
@@ -114,20 +114,27 @@
     <section class="participating-companies-container">
       <h2 class="participating-companies-title">DEELNEMENDE BEDRIJVEN</h2>
       <table class="participating-companies-table">
-  {% assign row_amount = 0 %}
-  {% assign column_amount = 0 %}
-  {% for company in companies %}
-    {% if column_amount == 0 %}
-      <tr>
-    {% endif %}
-    <td>{{ company.company }}</td>
-    {% assign column_amount = column_amount | plus: 1 %}
-    {% if column_amount == 3 %}
-      {% assign column_amount = 0 %}
-      </tr>
-    {% endif %}
-  {% endfor %}
-</table>
+        {% assign row_amount = 0 %}
+        {% assign column_amount = 0 %}
+        {% if companies.size == 0 %}
+          <tr>
+            <td>Nog geen bedrijven</td>
+          </tr>
+        {% else %}
+          {% for company in companies %}
+            {% if column_amount == 0 %}
+              <tr>
+            {% endif %}
+            <td>{{ company.company }}</td>
+            {% assign column_amount = column_amount | plus: 1 %}
+            {% if column_amount == 3 %}
+              {% assign column_amount = 0 %}
+              </tr>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </table>
+      
 
     
   </section>
