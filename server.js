@@ -64,41 +64,51 @@ app.post(…, async function (request, response) {
 
 // index ophalen alle data van cards
 app.get('/events', async function (request, response) {
-  const apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events')
+
+  const apiResponseHeaderEvents = await fetch('https://fdnd-agency.directus.app/items/dda_events?limit=3');
+  const apiResponseHeaderEventsJSON = await apiResponseHeaderEvents.json()
+
+  let apiResponse;
+  // const apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter[theme][_eq]=' + theme, '&filter[location][_eq]=' + location);
+
+  if (location === undefined || location === '') {
+    apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events');
+  } else {
+     apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter[location][_eq]=' + request.query.location);
+  }
+
   const apiResponseJSON = await apiResponse.json()
-  // console.log(apiResponseJSON.data)
 
-
-  response.render('events.liquid', { events: apiResponseJSON.data })
+  response.render('events.liquid', { events: apiResponseJSON.data, headerEvents: apiResponseHeaderEventsJSON.data })
 })
 
 
 
 
-app.get('/events/:location', async function (request, response) {
-  const location = request.params.location;
+// app.get('/events/:location', async function (request, response) {
+//   const location = request.params.location;
 
-  let apiResponse;
+//   let apiResponse;
 
-  if (location === 'Alle-locaties') {
-    apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events');
+//   if (location === 'Alle-locaties') {
+//     apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events');
 
-  } else if (location === 'Nog-niet-bekend') {
-    apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter={"location":{"_null":true}}');
+//   } else if (location === 'Nog-niet-bekend') {
+//     apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter={"location":{"_null":true}}');
 
-  } else if (location) {
-    apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter={"location":{"_eq":"' + request.params.location + '"}}');
+//   } else if (location) {
+//     apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter={"location":{"_eq":"' + request.params.location + '"}}');
 
-  } else {
-    apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events');
-  }
+//   } else {
+//     apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events');
+//   }
 
-  const apiResponseJSON = await apiResponse.json();
-  console.log(apiResponseJSON);
+//   const apiResponseJSON = await apiResponse.json();
+//   console.log(apiResponseJSON);
 
 
-  response.render('events.liquid', { events: apiResponseJSON.data });
-});
+//   response.render('events.liquid', { events: apiResponseJSON.data });
+// });
 
 
 // details pagina

@@ -20,14 +20,14 @@
 <main>
   <article class="event-cards-parent-container">
 
-    {% for event in events limit: 3 %}
+    {% for headerEvent in headerEvents %}
       <section class="card-child-container">
         <figure class="card-image-container">
-          {% if event.photo %}
+          {% if headerEvent.photo %}
             <img
               class="card-image"
-              src="https://fdnd-agency.directus.app/assets/{{ event.photo }}"
-              alt="{{ event.title }}">
+              src="https://fdnd-agency.directus.app/assets/{{ headerEvent.photo }}"
+              alt="{{ headerEvent.title }}">
           {% else %}
             <img
               class="card-image"
@@ -36,8 +36,8 @@
           {% endif %}
 
           <figcaption class="image-caption">
-            {% if event.title %}
-              {{ event.title | split: " " | slice: 0, 2 | join: " " | upcase }}
+            {% if headerEvent.title %}
+              {{ headerEvent.title | split: " " | slice: 0, 2 | join: " " | upcase }}
             {% else %}
               NADER BEPAALD
             {% endif %}
@@ -45,15 +45,15 @@
         </figure>
 
         <time class="event-time-stamp" datetime="{{ event.date }}">
-          {% if event.date %}
-            {{ event.date | upcase }}
+          {% if headerEvent.date %}
+            {{ headerEvent.date | upcase }}
           {% else %}
             NADER BEPAALD
           {% endif %}
 
           <span>
-            {% if event.location %}
-              / {{ event.location | upcase }}
+            {% if headerEvent.location %}
+              / {{ headerEvent.location | upcase }}
             {% else %}
               / NADER BEPAALD
             {% endif %}
@@ -61,14 +61,14 @@
         </time>
 
         <h3 class="event-card-title">
-          {% if event.title %}
-            {{ event.title | upcase }}
+          {% if headerEvent.title %}
+            {{ headerEvent.title | upcase }}
           {% else %}
             NADER BEPAALD
           {% endif %}
         </h3>
 
-        <a class="card-button button-text" href="/events/detail-event/{{ event.id }}">Details
+        <a class="card-button button-text" href="/events/detail-event/{{ headerEvent.id }}">Details
           <svg
             class="arrow-logo"
             width="17"
@@ -99,12 +99,11 @@
   <!-- ============ contenblok-2 ============ -->
 
   <!-- form voor filteren -->
-  <form class="form-container">
+  <form class="form-container" method="get" action="/events">
     <input
       class="input-field"
       type="search"
-      placeholder="Vul je e-mailadres in"
-      required>
+      placeholder="Vul je e-mailadres in">
 
     <div class="select-parent-container">
 
@@ -113,11 +112,11 @@
         <select
           class="select-button-1"
           aria-label="select label"
-          name="categorie">
+          name="theme">
           <option value="">THEMA</option>
-          <option value="">WEBINAIR</option>
-          <option value="">TECH</option>
-          <option value="">SPORT</option>
+          <option value="webinair">WEBINAIR</option>
+          <option value="tech">TECH</option>
+          <option value="sport">SPORT</option>
         </select>
         <span class="custom-plus">
           <svg
@@ -150,48 +149,29 @@
         <select
           class="select-button-2"
           aria-label="select label"
-          name="categorie"
-          onchange="if(this.value) window.location.href='/events/' + encodeURIComponent(this.value);">
-          <option value="">LOCATIE</option>
-          <option value="Alle-locaties">ALLE LOCATIES</option>
+          name="location"
+          >
+          <option value="">LOCATIES</option>
           <option value="Ermelo">ERMELO</option>
           <option value="Arnhem">ARNHEM</option>
           <option value="Online">ONLINE</option>
           <option value="Utrecht">UTRECHT</option>
           <option value="Eindhoven">EINDHOVEN</option>
           <option value="Austin, Texas">AUSTIN, TEXAS</option>
-          <option value="Nog-niet-bekend">NOG NIET BEKEND</option>
+          <option value="null">NOG NIET BEKEND</option>
         </select>
 
 
         <span class="custom-plus">
-          <svg
-            class="plus-icon"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M12 4.5L12 19.5"
-              stroke="#222226"
-              stroke-width="1.5"
-              stroke-miterlimit="4.62023"
-              stroke-linejoin="round"></path>
-            <path
-              d="M19.5 12L4.5 12"
-              stroke="#222226"
-              stroke-width="1.5"
-              stroke-miterlimit="4.62023"
-              stroke-linejoin="round"></path>
+          <svg class="plus-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4.5L12 19.5" stroke="#222226" stroke-width="1.5" stroke-miterlimit="4.62023" stroke-linejoin="round"></path>
+            <path d="M19.5 12L4.5 12" stroke="#222226" stroke-width="1.5" stroke-miterlimit="4.62023" stroke-linejoin="round"></path>
           </svg>
-
         </span>
-
-
       </div>
     </div>
 
+    <button type="submit">submit</button>
 
   </form>
 
