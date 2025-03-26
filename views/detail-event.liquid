@@ -61,9 +61,9 @@
         <p class="details-section-content">{{ eventDetails.content }}</p>
       {% else %}
 
-        <p class="details-section-content">This is a sample event description. It provides all the 
-            details about the event, such as the schedule, activities, and highlights. You can include 
-            additional information here about what attendees can expect at the event.
+        <p class="details-section-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus odio ut sapien convallis, a auctor ligula 
+          gravida. Phasellus interdum, felis vel cursus tincidunt, lorem libero laoreet metus, at elementum erat lorem 
+          ac purus. Quisque viverra quam nec dolor tincidunt, et tincidunt libero viverra. Integer bibendum.
         </p>
     {% endif %}
 
@@ -87,17 +87,17 @@
     <section class="sign-up-for-event-container">
       <h2 class="sign-up-form-title">INSCHRIJVEN</h2>
       <form class="sign-up-form" action="/events/detail-event/{{ eventDetails.id }}" method="post">
-          {% comment %} <input type="text" name="functie" class="input-field" placeholder="Functie*" required> {% endcomment %}
+          <input type="text" name="title" class="input-field" placeholder="Functie*" required>
           <input type="text" name="name" class="input-field" placeholder="Voornaam*" required>
-          {% comment %} <input type="text" name="tussenvoegsel" class="input-field" placeholder="Tussenvoegsel">
-          <input type="text" name="achternaam" class="input-field" placeholder="Achternaam*" required>
-          <input type="email" name="email" class="input-field" placeholder="E-mailadres*" required> {% endcomment %}
-          {% comment %} <input type="tel" name="mobiel" class="input-field" placeholder="Mobiel*" required> {% endcomment %}
+          <input type="text" name="infix" class="input-field" placeholder="Tussenvoegsel">
+          <input type="text" name="lastname" class="input-field" placeholder="Achternaam*" required>
+          <input type="email" name="email" class="input-field" placeholder="E-mailadres*" required>
+          <input type="tel" name="phone" class="input-field" placeholder="Mobiel*" required>
           <input type="text" name="company" class="input-field" placeholder="Bedrijfsnaam*" required>
           <input type="hidden" name="event" class="input-field" placeholder="event-id" value="{{ eventDetails.id }}" required>
-          {% comment %} <input type="url" name="bedrijfswebsite" class="input-field" placeholder="Bedrijfswebsite*" required> {% endcomment %}
-          {% comment %} <textarea name="motivatie" class="input-field" placeholder="Ik wil graag lid worden omdat:*" required></textarea> {% endcomment %}
-          {% comment %} <input type="number" name="fte" class="input-field" placeholder="FTE*" required min="0" step="0.1"> {% endcomment %}
+          <input type="url" name="company_website" class="input-field" placeholder="Bedrijfswebsite*" required>
+          <input type="text" name="reason" class="input-field" placeholder="Ik wil graag lid worden omdat:*" required></input>
+          <input type="number" name="fte" class="input-field" placeholder="FTE*" required min="0" step="0.1">
           <div class="sign-up-button-container">
             <button type="submit" class="sign-up-button">SCHRIJF ME IN
                 <svg class="signup-arrow-icon" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">

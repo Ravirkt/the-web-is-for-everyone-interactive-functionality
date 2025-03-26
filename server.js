@@ -72,16 +72,17 @@ app.get('/events', async function (request, response) {
 
   // const {theme, location} = request.query;
   const {location} = request.query;
-
+console.log("dit is ", request.query);
   let apiResponse;
 
   // const apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter[theme][_eq]=' + theme, '&filter[location][_eq]=' + location);
 
   if (location === undefined || location === '') {
-    apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events');
+    apiResponse = await fetch ('https://fdnd-agency.directus.app/items/dda_events');
   } else {
-     apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter[location][_eq]=' + request.query.location);
+     apiResponse = await fetch ('https://fdnd-agency.directus.app/items/dda_events?filter[location][_eq]=' + request.query.location);
   }
+  console.log("dit is", request.query);
 
   const apiResponseJSON = await apiResponse.json()
 
@@ -139,11 +140,6 @@ app.get('/events/detail-event/:id', async function (request, response) {
 });
 
 
-
-
-
-
-
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
 app.post('/events/detail-event/:id', async function (request, response) {
@@ -152,7 +148,9 @@ app.post('/events/detail-event/:id', async function (request, response) {
   const apiResponseDetails = await fetch('https://fdnd-agency.directus.app/items/dda_events/' + request.params.id);
   const apiResponseDetailsJSON = await apiResponseDetails.json();
 
-  const { name, company, event } = request.body;
+  const { title, name, email, phone, company, event, 
+          company_website, reason, fte } = request.body;
+  console.log(request.body)
 
   const apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_signups', {
     method: 'POST',
@@ -161,9 +159,15 @@ app.post('/events/detail-event/:id', async function (request, response) {
       
     },
     body: JSON.stringify({
+      title: title, 
       name: name,
+      email: email,
+      phone: phone,
       company: company,
-      event: event 
+      event: event,
+      company_website: company_website,
+      reason: reason,
+      fte: fte
     })
   });
 
