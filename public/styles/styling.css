@@ -21,14 +21,16 @@ nav {
   width: 5em;
 }
 
+
 .hamburger-menu-container {
   display: flex;
   flex-direction: column;
   gap: 0.3em;
-
   border: 1.5px solid var(--fonts-color-1);
   padding: 0.9em;
 }
+
+
 
 .menu-stripe-1,
 .menu-stripe-2,
@@ -58,15 +60,31 @@ nav {
   gap: 1.5em;
 }
 
+@supports (display: flex) {
+  .hero-section-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3em;
+
+    cursor: pointer;
+
+    &:hover {
+      color: var(--button);
+    }
+  }
+}
+
 .hero-section-button {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 0.3em;
+  padding-bottom: 0.3em;
 
   cursor: pointer;
-  
+
   &:hover {
     color: var(--button);
   }
@@ -112,10 +130,24 @@ nav {
 
 }
 
+
+@supports (display: flex) {
+  .card-image-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    height: 30em;
+    width: 20em;
+    justify-content: center;
+    align-self: center;
+  }
+
+}
+
 .card-image-container {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  padding-top: 1em;
   height: 30em;
   width: 20em;
   justify-content: center;
@@ -135,10 +167,18 @@ nav {
   padding: 0.2em;
 }
 
+@supports (display: flex) {
+  .event-time-stamp {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+  }
+}
+
 .event-time-stamp {
   display: flex;
   flex-direction: row;
-  gap: 0.5em;
+  padding-right: 0.5em;
 }
 
 .event-card-title {
@@ -207,7 +247,7 @@ nav {
   border: 2px solid var(--fonts-color-1);
   color: var(--fonts-color-1);
   cursor: pointer;
-  
+
   &:hover {
     color: var(--button);
   }

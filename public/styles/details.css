@@ -189,7 +189,7 @@ header {
     align-items: center;
     gap: 0.5em;
 
-    
+
 }
 
 .sign-up-button {
@@ -203,9 +203,9 @@ header {
     height: 4em;
 
     cursor: pointer;
-  
+
     &:hover {
-      color: var(--button);
+        color: var(--button);
     }
 }
 
@@ -310,8 +310,8 @@ header {
     height: 4em;
 
     cursor: pointer;
-  
-  &:hover {
-    color: var(--button);
-  }
+
+    &:hover {
+        color: var(--button);
+    }
 }
