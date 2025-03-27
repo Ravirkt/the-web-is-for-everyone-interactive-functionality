@@ -62,7 +62,10 @@ app.post(…, async function (request, response) {
 })
 */
 
-// index ophalen alle data van cards
+// --------  voor GET gebruik je request.query --------
+// --------  voor POST gebruik je request.body --------
+
+
 app.get('/events', async function (request, response) {
 
   const apiResponseHeaderEvents = await fetch('https://fdnd-agency.directus.app/items/dda_events?limit=3');
@@ -70,21 +73,32 @@ app.get('/events', async function (request, response) {
 
   // console.log(apiResponseJSON.data)
 
-  // const {theme, location} = request.query;
-  const {location} = request.query;
-console.log("dit is ", request.query);
+  const { theme, location } = request.query;
   let apiResponse;
 
-  // const apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter[theme][_eq]=' + theme, '&filter[location][_eq]=' + location);
+  console.log("test", request.query);
 
-  if (location === undefined || location === '') {
-    apiResponse = await fetch ('https://fdnd-agency.directus.app/items/dda_events');
-  } else {
-     apiResponse = await fetch ('https://fdnd-agency.directus.app/items/dda_events?filter[location][_eq]=' + request.query.location);
+  let directusApi = 'https://fdnd-agency.directus.app/items/dda_events';
+
+  // Kijkt of location of theme een waarde hebben. Is dat het geval wordt in de directusapi value de ? toegevoegd. Hiermee kunnen filters toepassen
+  if (location || theme) {
+    directusApi += '?';
+
+    // Hier kijkt er of theme een waarde heeft en pakt hij de directus filter syntax en zet de waarde van de theme daarin.
+    if (theme) {
+      directusApi += 'filter[theme][_eq]=' + request.query.theme;
+    }
+
+    // Hier kijkt er of de location een waarde heeft en of ook is gefiltert op theme. zo ja, dan wordt de & toegevoegt zodat er nog een filter in de url kan worden toegevoegd
+    if (location) {
+      if (theme) directusApi += '&';
+      directusApi += 'filter[location][_eq]=' + request.query.location;
+    }
   }
-  console.log("dit is", request.query);
 
-  const apiResponseJSON = await apiResponse.json()
+  console.log(directusApi)
+  apiResponse = await fetch(directusApi);
+  const apiResponseJSON = await apiResponse.json();
 
   response.render('events.liquid', { events: apiResponseJSON.data, headerEvents: apiResponseHeaderEventsJSON.data })
 })
@@ -121,21 +135,21 @@ console.log("dit is ", request.query);
 // details pagina
 app.get('/events/detail-event/:id', async function (request, response) {
 
-    // ophalen van event details
-    const apiResponseDetails = await fetch('https://fdnd-agency.directus.app/items/dda_events/' + request.params.id);
-    const apiResponseDetailsJSON = await apiResponseDetails.json();
+  // ophalen van event details
+  const apiResponseDetails = await fetch('https://fdnd-agency.directus.app/items/dda_events/' + request.params.id);
+  const apiResponseDetailsJSON = await apiResponseDetails.json();
 
-    // ophalen companies per event
-    const apiResponseCompany = await fetch('https://fdnd-agency.directus.app/items/dda_signups?fields=company&filter[event][_eq]=' + request.params.id);
-    const apiResponseCompanyJSON = await apiResponseCompany.json();
+  // ophalen companies per event
+  const apiResponseCompany = await fetch('https://fdnd-agency.directus.app/items/dda_signups?fields=company&filter[event][_eq]=' + request.params.id);
+  const apiResponseCompanyJSON = await apiResponseCompany.json();
 
-    console.log("Evendid:", request.params.id);
-    console.log("Companys:", apiResponseCompanyJSON);
+  console.log("Evendid:", request.params.id);
+  console.log("Companys:", apiResponseCompanyJSON);
 
-    response.render('detail-event.liquid', { 
-      eventDetails: apiResponseDetailsJSON.data, 
-      companies: apiResponseCompanyJSON.data 
-    });
+  response.render('detail-event.liquid', {
+    eventDetails: apiResponseDetailsJSON.data,
+    companies: apiResponseCompanyJSON.data
+  });
 
 });
 
@@ -148,18 +162,18 @@ app.post('/events/detail-event/:id', async function (request, response) {
   const apiResponseDetails = await fetch('https://fdnd-agency.directus.app/items/dda_events/' + request.params.id);
   const apiResponseDetailsJSON = await apiResponseDetails.json();
 
-  const { title, name, email, phone, company, event, 
-          company_website, reason, fte } = request.body;
+  const { title, name, email, phone, company, event,
+    company_website, reason, fte } = request.body;
   console.log(request.body)
 
   const apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_signups', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      
+
     },
     body: JSON.stringify({
-      title: title, 
+      title: title,
       name: name,
       email: email,
       phone: phone,
@@ -173,7 +187,7 @@ app.post('/events/detail-event/:id', async function (request, response) {
 
 
   // response.send(`Je naam is ${request.body.name} en je company is ${request.body.company} en de eventnummer id ${request.body.event}`);
-    
+
   response.redirect(303, '/events/detail-event/' + request.params.id);
 });
 
