@@ -186,9 +186,7 @@ app.post('/events/detail-event/:id', async function (request, response) {
   });
 
 
-  // response.send(`Je naam is ${request.body.name} en je company is ${request.body.company} en de eventnummer id ${request.body.event}`);
-
-  response.redirect(303, '/events/detail-event/' + request.params.id);
+  response.redirect(303, '/events/detail-event/' + request.params.id + '?success=true');
 });
 
 

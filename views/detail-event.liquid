@@ -82,7 +82,6 @@
     </section>
 
   <!-- ============ contenblok-4 ============ -->
-
   {% if eventDetails.id %}
     <section class="sign-up-for-event-container">
       <h2 class="sign-up-form-title">INSCHRIJVEN</h2>
@@ -96,20 +95,30 @@
           <input type="text" name="company" class="input-field" placeholder="Bedrijfsnaam*" required>
           <input type="hidden" name="event" class="input-field" placeholder="event-id" value="{{ eventDetails.id }}" required>
           <input type="url" name="company_website" class="input-field" placeholder="Bedrijfswebsite*" required>
-          <input type="text" name="reason" class="input-field" placeholder="Ik wil graag lid worden omdat:*" required></input>
+          <input type="text" name="reason" class="input-field" placeholder="Ik wil graag lid worden omdat:*" required>
           <input type="number" name="fte" class="input-field" placeholder="FTE*" required min="0" step="0.1">
           <div class="sign-up-button-container">
-            <button type="submit" class="sign-up-button">SCHRIJF ME IN
-                <svg class="signup-arrow-icon" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8.5 3L13.5001 8.0001L8.5 13.0002" stroke="#222226" stroke-width="1.5" stroke-miterlimit="4.62023" />
-                    <path d="M3.5 8L13.5 8" stroke="#222226" stroke-width="1.5" stroke-miterlimit="4.62023" stroke-linejoin="round" />
-                </svg>
-            </button>
+              <button type="submit" class="sign-up-button">SCHRIJF ME IN</button>
           </div>
       </form>
-  </section>
-{% endif %}
+    </section>
+  {% endif %}
 
+  <p id="succes">Uw inschrijving is verzonden!</p>
+  
+  <script>
+    const url = window.location.href;
+  
+    if (url.includes('success=true')) {
+      const successMessage = document.getElementById('succes');
+      successMessage.style.display = 'block';
+  
+      setTimeout(function() {
+        successMessage.style.display = 'none';
+      }, 5000);  
+    }
+  </script>
+  
     <!-- ============ contenblok-5 ============ -->
     <section class="participating-companies-container">
       <h2 class="participating-companies-title">DEELNEMENDE BEDRIJVEN</h2>

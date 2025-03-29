@@ -209,8 +209,21 @@ header {
     }
 }
 
-/* all companies */
+/* succes beriht */
+#succes {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: rgb(0, 0, 0);
+    background-color: lightgreen;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 9999;
+    display: none;
+}
 
+
+/* all companies */
 .participating-companies-container {
     display: grid;
     grid-template-columns: 1fr;
