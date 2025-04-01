@@ -162,7 +162,6 @@ app.get('/events/detail-event/:id', async function (request, response) {
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
 app.post('/events/detail-event/:id', async function (request, response) {
 
-  // ophalen van event details
   const apiResponseDetails = await fetch('https://fdnd-agency.directus.app/items/dda_events/' + request.params.id);
   const apiResponseDetailsJSON = await apiResponseDetails.json();
 
