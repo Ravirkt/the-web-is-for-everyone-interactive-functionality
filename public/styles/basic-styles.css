@@ -129,7 +129,6 @@ body {
 
 /* select button */
 select {
-  appearance: none;
   font-family: "Archivo", sans-serif;
   font-size: clamp(12px, 1vw, 14px);
   line-height: clamp(20px, 1.5vw, 24px);
