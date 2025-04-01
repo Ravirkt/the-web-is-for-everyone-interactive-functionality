@@ -224,36 +224,58 @@ nav {
   justify-content: center;
 }
 
+
+
+
+
+
+
 .select-container {
   position: relative;
   display: inline-block;
 }
 
-.select-button-1 {
+.select-button-1, .select-button-2 {
   padding: 1em 5em 1em 1em;
   background-color: var(--background-color);
   border: 2px solid var(--fonts-color-1);
   color: var(--fonts-color-1);
   cursor: pointer;
+  appearance: none;
+
 
   &:hover {
     color: var(--button);
   }
 }
 
-.select-button-2 {
-  padding: 1em 5em 1em 1em;
-  background-color: var(--background-color);
-  border: 2px solid var(--fonts-color-1);
-  color: var(--fonts-color-1);
-  cursor: pointer;
+.select-container::after {
+  content: ""; 
+  border-left: none;
+}
 
-  &:hover {
-    color: var(--button);
+@supports (appearance: none) {
+  .select-container::after {
+    content: "+"; 
+    font-size: 1.5em;
+    font-weight: 50;
+    font-family: "Archivo", sans-serif;
+    color: var(--fonts-color-1);
+    
+    position: absolute;
+    right: 15px;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+    padding-left: 10px;
+    border-left: 2px solid var(--fonts-color-1); 
   }
 }
 
-.custom-plus {
+/* .custom-plus {
   position: absolute;
   right: 0;
   top: 0;
@@ -263,7 +285,6 @@ nav {
 
   background-color: rgba(255, 255, 255, 0);
   border-top: 2px solid var(--fonts-color-1);
-  /* border-bottom: 2px solid var(--fonts-color-1); */
   border-left: 2px solid var(--fonts-color-1);
   border-right: 2px solid var(--fonts-color-1);
 
@@ -271,7 +292,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .input-field {
   appearance: none;
@@ -295,6 +316,11 @@ nav {
   align-items: center;
   justify-content: center;
 }
+
+
+
+
+
 
 .event-card-child-container {
   padding-top: 2em;
