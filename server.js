@@ -135,11 +135,15 @@ app.get('/events', async function (request, response) {
 // details pagina
 app.get('/events/detail-event/:id', async function (request, response) {
 
-  // ophalen van event details
+  // ophalen van data specifieke event door id
   const apiResponseDetails = await fetch('https://fdnd-agency.directus.app/items/dda_events/' + request.params.id);
   const apiResponseDetailsJSON = await apiResponseDetails.json();
 
-  // ophalen companies per event
+  if (!apiResponseDetailsJSON.data) {
+    return response.status(404).render('404.liquid'); 
+  }
+
+  // Voor ophalen alle companies die zijn ingeschreven
   const apiResponseCompany = await fetch('https://fdnd-agency.directus.app/items/dda_signups?fields=company&filter[event][_eq]=' + request.params.id);
   const apiResponseCompanyJSON = await apiResponseCompany.json();
 
