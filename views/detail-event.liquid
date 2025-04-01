@@ -134,7 +134,6 @@
       // Let op: hiermee overschrijven we de default Loading state van de browser...
       event.preventDefault();
   
-      // ✅ Loader tonen
       const loader = document.querySelector(".loader");
       if (loader) {
         loader.classList.add("visible");
@@ -166,7 +165,6 @@
       // Hier wil je waarschijnlijk de Loading state vervangen door een Success state
       form.outerHTML = newState.outerHTML;
   
-      // ✅ Loader verbergen
       if (loader) {
         loader.classList.remove("visible");
       }
