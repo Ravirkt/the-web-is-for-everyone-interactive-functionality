@@ -185,6 +185,7 @@ app.post('/events/detail-event/:id', async function (request, response) {
     })
   });
 
+  console.log(apiResponseDetailsJSON)
 
   response.redirect(303, '/events/detail-event/' + request.params.id + '?success=true');
 });
