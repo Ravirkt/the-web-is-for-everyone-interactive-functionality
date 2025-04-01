@@ -133,11 +133,12 @@
       // Voorkom de standaard submit van de browser
       // Let op: hiermee overschrijven we de default Loading state van de browser...
       event.preventDefault();
+
+      form.classList.add("submitting");
   
       const loader = document.querySelector(".loader");
-      if (loader) {
-        loader.classList.add("visible");
-      }
+      loader.classList.add("visible");
+      
   
       // Doe een fetch naar de server, net als hoe de browser dit normaal zou doen
       // Gebruik daarvoor het action en method attribuut van het originele formulier
@@ -165,9 +166,9 @@
       // Hier wil je waarschijnlijk de Loading state vervangen door een Success state
       form.outerHTML = newState.outerHTML;
   
-      if (loader) {
-        loader.classList.remove("visible");
-      }
+      document.querySelector(".loader");
+      loader.classList.remove("visible");
+      
 
       const successMessage = document.getElementById('succes');
       if (successMessage) {
