@@ -12,6 +12,7 @@
       - [Inschrijfformulier](#inschrijfformulier)
   - [Kenmerken](#kenmerken)
     - [Gebruikte technologieën](#gebruikte-technologieën)
+  - [Mobile first](#mobile-first)
   - [Installatie](#installatie)
   - [Bronnen](#bronnen)
   - [Licentie](#licentie)
@@ -44,7 +45,13 @@ De pagina is deel van een dynamische en interactieve website waar gebruikers aan
 ### Events
 Op eventpagina kan de gebruiker een overzicht zien van alle eventen die er zijn. Alle data van de evenementen zijn doormiddel van een GET request opgehaald uit de Directus API.
 
+| hero-section | Filter |
+|--------|--------|
+| <img src="./public/assets/hero-section.gif" width="200"> | <img src="./public/assets/filter.png" width="200"> 
 
+| Footer | detailspagina |
+|--------|--------|
+| <img src="./public/assets/footer.gif" width="200"> | <img src="./public/assets/addedcomp.gif" width="200">
 
 ### Events filteren
 Op de eventspagina kunnen gebruikers alle opkomende events bekijken. Om dit proces makkelijker te maken voor de gebruiker zijn er filterfunctionaliteiten die filteren op locatie, thema en een combinatie van beide.
@@ -66,10 +73,10 @@ Als de gebruiker een event heeft gevonden, kan hij zich inschrijven. Hiervoor mo
 
 Wanneer het formulier wordt verzonden, krijgt de gebruiker visuele feedback. Dit gebeurt door middel van een geanimeerde loader en een verlaagde opacity van het formulier, waardoor het lijkt alsof het niet te gebruiken is. Zodra het formulier succesvol is verzonden, verdwijnt de loader en herstelt de opacity naar de normale waarde. De gebruiker ontvangt vervolgens een tekstueel bericht waarin wordt bevestigd dat de inschrijving succesvol is voltooid.
 
- <div style="display: inline-block; text-align: center; margin-right: 10px;">
+ <figure style="display: inline-block; text-align: center; margin-right: 10px;">
     <img src="./public/assets/form.gif" alt="feedforward submitten form" width="200px">
     <figcaption>detailspagina</figcaption>
-  </div>
+  </figure>
 
 
 ## Kenmerken
@@ -77,7 +84,7 @@ Voor dit project heb ik gebruik gemaakt van veel moderne webtechnieken, waaronde
 
 ### Gebruikte technologieën
 - **HTML & CSS**  
-  De basisstructuur en styling van de website zijn opgebouwd met HTML en CSS.
+  De basisstructuur en styling van de website zijn opgebouwd met HTML en CSS. De huisstijl van de website is in een aparte styleguide verwerkt.
 
 - **Server-side JavaScript**  
   Voor de back-end is gebruik gemaakt van Node.js en Express om een dynamische en efficiënte webserver te creëren. Nodejs zorgt ervoor dat ik Javascript serverside kan gebruiken en Express maakt mogelijk om routes te maken en responses en requests te verwerken.
@@ -91,7 +98,7 @@ Voor dit project heb ik gebruik gemaakt van veel moderne webtechnieken, waaronde
 - **Nodemon**  
   Voor efficienty is er gebruik gemaakt van Nodemon tijdens de development. Dit zorgt ervoor dat de server automatisch herstart bij wijzigingen in de code.
 
-##Responsive
+## Mobile first
 Bij de ontwikkeling van de pagina is gewerkt volgens het mobile first-principe. Hierbij is ook rekening gehouden met de responsiveness van de typografie voor grotere schermen. Dit is gedaan door middel van CSS clamp(). Deze aanpak is verwerkt in de styleguide van de basic-styling.
 
 ## Installatie
