@@ -60,10 +60,10 @@ Als de gebruiker een event heeft gevonden, kan hij zich inschrijven. Hiervoor mo
 
 Wanneer het formulier wordt verzonden, krijgt de gebruiker visuele feedback. Dit gebeurt door middel van een geanimeerde loader en een verlaagde opacity van het formulier, waardoor het lijkt alsof het niet te gebruiken is. Zodra het formulier succesvol is verzonden, verdwijnt de loader en herstelt de opacity naar de normale waarde. De gebruiker ontvangt vervolgens een tekstueel bericht waarin wordt bevestigd dat de inschrijving succesvol is voltooid.
 
- <figure style="display: inline-block; text-align: center; margin-right: 10px;">
-    <video src="./public/assets/Screen Recording 2025-04-01 at 20.14.02.mov" alt="feedforward submitten form" width="200px">
+ <div style="display: inline-block; text-align: center; margin-right: 10px;">
+    <video src="./public/assets//loader.mp4" alt="feedforward submitten form" width="200px">
     <figcaption>detailspagina</figcaption>
-  </figure>
+  </div>
 
 
 ## Kenmerken
