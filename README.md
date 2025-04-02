@@ -6,6 +6,7 @@
   - [Inhoudsopgave](#inhoudsopgave)
   - [Beschrijving](#beschrijving)
   - [Gebruik](#gebruik)
+    - [Events](#events)
     - [Events filteren](#events-filteren)
     - [Eventdetails bekijken](#eventdetails-bekijken)
       - [Inschrijfformulier](#inschrijfformulier)
@@ -38,7 +39,12 @@ In de huidige sprint 9 wordt de nadruk gelegd op het kunnen POSTEN van data in d
 
 
 ## Gebruik
-De pagina is deel van een dynamische en interactieve website waar gebruikers aankomende evenementen kunnen vinden en filteren op basis van locatie en thema.
+De pagina is deel van een dynamische en interactieve website waar gebruikers aankomende evenementen kunnen vinden en filteren op basis van locatie en thema. De gebruiker kan vervolgens een inschrijving indienen om zich te melden voor het event.
+
+### Events
+Op eventpagina kan de gebruiker een overzicht zien van alle eventen die er zijn. Alle data van de evenementen zijn doormiddel van een GET request opgehaald uit de Directus API.
+
+
 
 ### Events filteren
 Op de eventspagina kunnen gebruikers alle opkomende events bekijken. Om dit proces makkelijker te maken voor de gebruiker zijn er filterfunctionaliteiten die filteren op locatie, thema en een combinatie van beide.
@@ -61,7 +67,7 @@ Als de gebruiker een event heeft gevonden, kan hij zich inschrijven. Hiervoor mo
 Wanneer het formulier wordt verzonden, krijgt de gebruiker visuele feedback. Dit gebeurt door middel van een geanimeerde loader en een verlaagde opacity van het formulier, waardoor het lijkt alsof het niet te gebruiken is. Zodra het formulier succesvol is verzonden, verdwijnt de loader en herstelt de opacity naar de normale waarde. De gebruiker ontvangt vervolgens een tekstueel bericht waarin wordt bevestigd dat de inschrijving succesvol is voltooid.
 
  <div style="display: inline-block; text-align: center; margin-right: 10px;">
-    <video src="./public/assets//loader.mp4" alt="feedforward submitten form" width="200px">
+    <video src="./public/assets/form.mp4" alt="feedforward submitten form" width="200px">
     <figcaption>detailspagina</figcaption>
   </div>
 
