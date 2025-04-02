@@ -22,23 +22,6 @@ Dit project is een opdracht die ik heb ontvangen van het softwarebedrijf De Voor
 
 In de huidige sprint 9 wordt de nadruk gelegd op het kunnen POSTEN van data in de database of API en Progressive enhancement om ervoor te zorgen dat de core functionaliteiten werken op verschillende browsers en verschillende browserversie's.
 
-<figure style="display: inline-block; text-align: center; margin-right: 10px;">
-    <img src="./public/assets/filter.jpeg" alt="filter" width="200px">
-    <figcaption>filter</figcaption>
-  </figure>
-
-  <figure style="display: inline-block; text-align: center; margin-right: 10px;">
-    <img src="./public/assets/footer.jpeg" alt="footer" width="200px">
-    <figcaption>footer</figcaption>
-  </figure>
-
-  <figure style="display: inline-block; text-align: center; margin-right: 10px;">
-    <img src="./public/assets/details.jpeg" alt="detailspagina" width="200px">
-    <figcaption>detailspagina</figcaption>
-  </figure>
-
-
-
 ## Gebruik
 De pagina is deel van een dynamische en interactieve website waar gebruikers aankomende evenementen kunnen vinden en filteren op basis van locatie en thema. De gebruiker kan vervolgens een inschrijving indienen om zich te melden voor het event.
 
