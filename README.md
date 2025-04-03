@@ -12,6 +12,7 @@
       - [Inschrijfformulier](#inschrijfformulier)
   - [Kenmerken](#kenmerken)
     - [Gebruikte technologieën](#gebruikte-technologieën)
+      - [POST](#post)
   - [Mobile first](#mobile-first)
   - [Installatie](#installatie)
   - [Bronnen](#bronnen)
@@ -28,13 +29,13 @@ De pagina is deel van een dynamische en interactieve website waar gebruikers aan
 ### Events
 Op eventpagina kan de gebruiker een overzicht zien van alle eventen die er zijn. Alle data van de evenementen zijn doormiddel van een GET request opgehaald uit de Directus API.
 
-| hero-section | Filter |
-|--------|--------|
-| <img src="./public/assets/hero-section.gif" width="200"> | <img src="./public/assets/filter.png" width="200"> 
+| hero-section                                             | Filter                                             |
+| -------------------------------------------------------- | -------------------------------------------------- |
+| <img src="./public/assets/hero-section.gif" width="200"> | <img src="./public/assets/filter.png" width="200"> |
 
-| Footer | detailspagina |
-|--------|--------|
-| <img src="./public/assets/footer.gif" width="200"> | <img src="./public/assets/addedcomp.gif" width="200">
+| Footer                                             | detailspagina                                         |
+| -------------------------------------------------- | ----------------------------------------------------- |
+| <img src="./public/assets/footer.gif" width="200"> | <img src="./public/assets/addedcomp.gif" width="200"> |
 
 ### Events filteren
 Op de eventspagina kunnen gebruikers alle opkomende events bekijken. Om dit proces makkelijker te maken voor de gebruiker zijn er filterfunctionaliteiten die filteren op locatie, thema en een combinatie van beide.
@@ -56,12 +57,9 @@ Als de gebruiker een event heeft gevonden, kan hij zich inschrijven. Hiervoor mo
 
 Wanneer het formulier wordt verzonden, krijgt de gebruiker visuele feedback. Dit gebeurt door middel van een geanimeerde loader en een verlaagde opacity van het formulier, waardoor het lijkt alsof het niet te gebruiken is. Zodra het formulier succesvol is verzonden, verdwijnt de loader en herstelt de opacity naar de normale waarde. De gebruiker ontvangt vervolgens een tekstueel bericht waarin wordt bevestigd dat de inschrijving succesvol is voltooid.
 
-| Form submit |
-|--------|
+| Form submit                                                                         |
+| ----------------------------------------------------------------------------------- |
 | <img src="./public/assets/form.gif" alt="feedforward submitten form" width="200px"> |
-
- 
-
 
 ## Kenmerken
 Voor dit project heb ik gebruik gemaakt van veel moderne webtechnieken, waaronder:
@@ -82,6 +80,9 @@ Voor dit project heb ik gebruik gemaakt van veel moderne webtechnieken, waaronde
 - **Nodemon**  
   Voor efficienty is er gebruik gemaakt van Nodemon tijdens de development. Dit zorgt ervoor dat de server automatisch herstart bij wijzigingen in de code.
 
+  #### POST
+  De inschrijfform op de details pagina heeft 
+
 ## Mobile first
 Bij de ontwikkeling van de pagina is gewerkt volgens het mobile first-principe. Hierbij is ook rekening gehouden met de responsiveness van de typografie voor grotere schermen. Dit is gedaan door middel van CSS clamp(). Deze aanpak is verwerkt in de styleguide van de basic-styling.
 
@@ -89,7 +90,7 @@ Bij de ontwikkeling van de pagina is gewerkt volgens het mobile first-principe. 
 Project lokaal installeren
 
 1. **Fork de repository**  
-   Ga naar de [repository pagina](https://github.com/Ravirkt/server-side-rendering-server-side-website) en klik op de **Fork** knop in de rechterbovenhoek om een kopie van de repository naar je eigen GitHub account te maken.
+   Ga naar de [repository pagina](https://github.com/Ravirkt/the-web-is-for-everyone-interactive-functionality) en klik op de **Fork** knop in de rechterbovenhoek om een kopie van de repository naar je eigen GitHub account te maken.
 
 2. **Clone de repository**  
    Clone je geforkte repository naar je lokale computer door het volgende commando uit te voeren in de terminal: git clone https://github.com/Ravirkt/server-side-rendering-server-side-website
