@@ -93,7 +93,7 @@ Project lokaal installeren
    Ga naar de [repository pagina](https://github.com/Ravirkt/the-web-is-for-everyone-interactive-functionality) en klik op de **Fork** knop in de rechterbovenhoek om een kopie van de repository naar je eigen GitHub account te maken.
 
 2. **Clone de repository**  
-   Clone je geforkte repository naar je lokale computer door het volgende commando uit te voeren in de terminal: git clone https://github.com/Ravirkt/server-side-rendering-server-side-website
+   Clone je geforkte repository naar je lokale computer door het volgende commando uit te voeren in de terminal: git clone https://github.com/Ravirkt/the-web-is-for-everyone-interactive-functionality
 
 3. **Installeer de packages**  
    Voer in de terminal de command **npm install** uit om de packages uit de package.JSON te installeren.
