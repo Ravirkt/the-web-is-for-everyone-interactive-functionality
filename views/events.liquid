@@ -44,21 +44,22 @@
           </figcaption>
         </figure>
 
-        <time class="event-time-stamp" datetime="{{ event.date }}">
-          {% if headerEvent.date %}
+        <time class="event-time-stamp" datetime="{{ event.date | date: '%Y-%m-%d' }}">
+        {% if headerEvent.date %}
             {{ headerEvent.date | upcase }}
-          {% else %}
+        {% else %}
             NADER BEPAALD
-          {% endif %}
+        {% endif %}
 
-          <span>
-            {% if headerEvent.location %}
-              / {{ headerEvent.location | upcase }}
-            {% else %}
-              / NADER BEPAALD
-            {% endif %}
-          </span>
-        </time>
+        <span>
+        {% if headerEvent.location %}
+          / {{ headerEvent.location | upcase }}
+        {% else %}
+            / NADER BEPAALD
+        {% endif %}
+    </span>
+  </time>
+
 
         <h3 class="event-card-title">
           {% if headerEvent.title %}
@@ -161,7 +162,7 @@
         </h4>
 
         <div class="time-location">
-          <time class="event-time-stamp" datetime="{{ event.date }}">
+          <time class="event-time-stamp" datetime="{{ event.date | date: '%Y-%m-%d' }}">
             {% if event.date %}
               {{ event.date | upcase }}
             {% else %}
