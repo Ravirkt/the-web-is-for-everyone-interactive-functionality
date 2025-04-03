@@ -44,21 +44,25 @@
           </figcaption>
         </figure>
 
-        <time class="event-time-stamp" datetime="{{ event.date | date: '%Y-%m-%d' }}">
-        {% if headerEvent.date %}
-            {{ headerEvent.date | upcase }}
-        {% else %}
-            NADER BEPAALD
-        {% endif %}
-
-        <span>
-        {% if headerEvent.location %}
-          / {{ headerEvent.location | upcase }}
-        {% else %}
-          / NADER BEPAALD
-    {% endif %}
-  </span>
-</time>
+        {% assign event_date = event.date | default: '2024-01-01' %}
+        <time class="event-time-stamp" datetime="{{ event_date | date: '%Y-%m-%d' }}">
+            <span>
+                {% if headerEvent.date %}
+                    {{ headerEvent.date | upcase }}
+                {% else %}
+                    NADER BEPAALD
+                {% endif %}
+            </span>
+        
+            <span>
+                {% if headerEvent.location %}
+                    / {{ headerEvent.location | upcase }}
+                {% else %}
+                    / NADER BEPAALD
+                {% endif %}
+            </span>
+        </time>
+        
 
 
         <h3 class="event-card-title">
