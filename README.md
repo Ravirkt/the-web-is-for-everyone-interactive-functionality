@@ -12,7 +12,6 @@
       - [Inschrijfformulier](#inschrijfformulier)
   - [Kenmerken](#kenmerken)
     - [Gebruikte technologieën](#gebruikte-technologieën)
-      - [POST](#post)
   - [Mobile first](#mobile-first)
   - [Installatie](#installatie)
   - [Bronnen](#bronnen)
@@ -79,9 +78,6 @@ Voor dit project heb ik gebruik gemaakt van veel moderne webtechnieken, waaronde
 
 - **Nodemon**  
   Voor efficienty is er gebruik gemaakt van Nodemon tijdens de development. Dit zorgt ervoor dat de server automatisch herstart bij wijzigingen in de code.
-
-  #### POST
-  De inschrijfform op de details pagina heeft 
 
 ## Mobile first
 Bij de ontwikkeling van de pagina is gewerkt volgens het mobile first-principe. Hierbij is ook rekening gehouden met de responsiveness van de typografie voor grotere schermen. Dit is gedaan door middel van CSS clamp(). Deze aanpak is verwerkt in de styleguide van de basic-styling.
