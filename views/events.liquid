@@ -44,7 +44,7 @@
           </figcaption>
         </figure>
 
-        <div class="event-time-stamp" div="{{ event.date | date: '%Y-%m-%d' }}">
+        <time class="event-time-stamp" datetime="{{ event.date | date: '%Y-%m-%d' }}">
         {% if headerEvent.date %}
             {{ headerEvent.date | upcase }}
         {% else %}
@@ -55,10 +55,10 @@
         {% if headerEvent.location %}
           / {{ headerEvent.location | upcase }}
         {% else %}
-            / NADER BEPAALD
-        {% endif %}
-    </span>
-  </div>
+          / NADER BEPAALD
+    {% endif %}
+  </span>
+</time>
 
 
         <h3 class="event-card-title">
@@ -162,7 +162,7 @@
         </h4>
 
         <div class="time-location">
-          <div class="event-time-stamp" div="{{ event.date }}">
+          <time class="event-time-stamp" datetime="{{ event.date }}">
             {% if event.date %}
               {{ event.date | upcase }}
             {% else %}
@@ -176,7 +176,7 @@
                 / NADER BEPAALD
               {% endif %}
             </span>
-          </div>
+          </time>
         </div>
 
         <a class="event-card-button button-text" href="/events/detail-event/{{ event.id }}">
@@ -251,9 +251,9 @@
       <h3 class="event-card-title">Ledenbijeenkomst</h3>
 
       <div class="time-location">
-        <div class="event-time-stamp" div="2024-11-09">WO 09 NOV
+        <time class="event-time-stamp" datetime="2024-11-09">WO 09 NOV
           <span>/ AMSTERDAM</span>
-        </div>
+        </time>
       </div>
 
       <p class="already-passed">heeft plaatsgevonden</p>
@@ -289,9 +289,9 @@
       <h3 class="event-card-title">Ledenbijeenkomst</h3>
 
       <div class="time-location">
-        <div class="event-time-stamp" div="2024-11-09">WO 09 NOV
+        <time class="event-time-stamp" datetime="2024-11-09">WO 09 NOV
           <span>/ AMSTERDAM</span>
-        </div>
+        </time>
       </div>
 
       <p class="already-passed">heeft plaatsgevonden</p>
@@ -327,9 +327,9 @@
       <h3 class="event-card-title">Ledenbijeenkomst</h3>
 
       <div class="time-location">
-        <div class="event-time-stamp" div="2024-11-09">WO 09 NOV
+        <time class="event-time-stamp" datetime="2024-11-09">WO 09 NOV
           <span>/ AMSTERDAM</span>
-        </div>
+        </time>
       </div>
 
       <p class="already-passed">heeft plaatsgevonden</p>
