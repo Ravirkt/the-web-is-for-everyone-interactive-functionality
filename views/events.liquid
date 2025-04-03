@@ -44,27 +44,21 @@
           </figcaption>
         </figure>
 
-        {% if event.date %}
-          <time class="event-time-stamp" datetime="{{ event.date | date: '%Y-%m-%d' }}">
+        <div class="event-time-stamp" div="{{ event.date | date: '%Y-%m-%d' }}">
+        {% if headerEvent.date %}
+            {{ headerEvent.date | upcase }}
         {% else %}
-          <time class="event-time-stamp">
+            NADER BEPAALD
         {% endif %}
-          
-            {% if headerEvent.date %}
-              {{ headerEvent.date | upcase }}
-            {% else %}
-              NADER BEPAALD
-            {% endif %}
-        
-            <span>
-              {% if headerEvent.location %}
-                / {{ headerEvent.location | upcase }}
-              {% else %}
-                / NADER BEPAALD
-              {% endif %}
-            </span>
-        </time>
-        
+
+        <span>
+        {% if headerEvent.location %}
+          / {{ headerEvent.location | upcase }}
+        {% else %}
+            / NADER BEPAALD
+        {% endif %}
+    </span>
+  </div>
 
 
         <h3 class="event-card-title">
@@ -168,27 +162,21 @@
         </h4>
 
         <div class="time-location">
-          {% if event.date %}
-            <time class="event-time-stamp" datetime="{{ event.date | date: '%Y-%m-%d' }}">
-          {% else %}
-            <time class="event-time-stamp">
-          {% endif %}
-          
-              {% if event.date %}
-                {{ event.date | upcase }}
+          <div class="event-time-stamp" div="{{ event.date }}">
+            {% if event.date %}
+              {{ event.date | upcase }}
+            {% else %}
+              NADER BEPAALD
+            {% endif %}
+
+            <span>
+              {% if event.location %}
+                / {{ event.location | upcase }}
               {% else %}
-                NADER BEPAALD
+                / NADER BEPAALD
               {% endif %}
-          
-              <span>
-                {% if event.location %}
-                  / {{ event.location | upcase }}
-                {% else %}
-                  / NADER BEPAALD
-                {% endif %}
-              </span>
-          </time>
-          
+            </span>
+          </div>
         </div>
 
         <a class="event-card-button button-text" href="/events/detail-event/{{ event.id }}">
